@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>허본</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        scroll-behavior: smooth;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      .wrap {
+        width: 100%;
+        margin: 0 auto;
+      }
+      .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100px;
+        padding: 0 50px;
+        background-color: wheat;
+        display: flex;
+        justify-content: space-between;
+        z-index: 1;
+      }
+      .navi {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+      .submenu {
+        width: 100%;
+        height: 100%;
+        background-color: #ffe6c1;
+        display: none;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        top: 100%;
+        left: 0;
+        margin-left: 65px;
+        white-space: nowrap;
+        gap: 20px;
+      }
+
+      .submenu li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .submenu li a {
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .navi:hover .submenu {
+        display: block;
+      }
+      .main {
+        position: relative;
+        margin-top: 100px;
+        margin-bottom: 100px;
+      }
+      section {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 200px);
+        scroll-margin-top: 100px;
+        padding: 15px 0;
+      }
+
+      .box {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #ddd;
+      }
+
+      /* 메인 영역 시작  */
+
+      .mainbox {
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .abouttop {
+        width: 1000px;
+        height: 300px;
+        position: relative;
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+      .intropic {
+        border-radius: 25px;
+      }
+      .intro {
+        width: 100%;
+        height: 300px;
+        text-align: left;
+        margin: auto;
+      }
+      .introtitle {
+        font-size: 64px;
+        margin-bottom: 40px;
+      }
+      .introdiscribtion {
+        font-size: 24px;
+      }
+
+      .infobox {
+        width: 1000px;
+        height: 530px;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: auto;
+        column-gap: 200px;
+      }
+      .info {
+        width: 400px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        background-color: #ffe6c1;
+        border-radius: 25px;
+        padding: 10px;
+        gap: 20px;
+      }
+      .infotitle {
+        width: 100%;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        font-size: 36px;
+        text-align: left;
+        gap: 20px;
+      }
+      .infodetail {
+        font-size: 16px;
+        text-align: left;
+      }
+      .education {
+        width: 400px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        background-color: #ffe6c1;
+        border-radius: 25px;
+        padding: 10px;
+        gap: 20px;
+      }
+      .edutitle {
+        width: 100%;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        font-size: 36px;
+        text-align: left;
+        gap: 20px;
+      }
+      .edudetail {
+        font-size: 16px;
+        text-align: left;
+      }
+      .software {
+        width: 400px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        background-color: #ffe6c1;
+        border-radius: 25px;
+        padding: 10px;
+        gap: 20px;
+      }
+      .softwaretitle {
+        width: 100%;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        font-size: 36px;
+        text-align: left;
+        gap: 20px;
+      }
+      .softwaredetail {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        font-size: 16px;
+        text-align: left;
+      }
+      .contact {
+        width: 400px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        background-color: #ffe6c1;
+        border-radius: 25px;
+        padding: 10px;
+        gap: 20px;
+      }
+      .contacttitle {
+        width: 100%;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        font-size: 36px;
+        text-align: left;
+        gap: 20px;
+      }
+      .contactdetail {
+        font-size: 16px;
+        text-align: left;
+      }
+
+      /* 비디오 영역 */
+
+      .videobox {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+      }
+
+      .videotop {
+        display: flex;
+        flex-direction: column;
+        width: 480px;
+        height: 150px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .videopagetitle {
+        font-size: 64px;
+        text-align: center;
+      }
+
+      .videopagedescription {
+        font-size: 15px;
+        text-align: center;
+      }
+      .videopostbox {
+        width: 100%;
+        height: 400px;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+        padding: 30px;
+      }
+      .videocard {
+        width: 500px;
+        height: 400px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #e6e6e6;
+        border-radius: 10px;
+        padding: 20px;
+        justify-content: space-between;
+      }
+
+      .videoplay {
+        display: flex;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .videotext {
+        width: 400px;
+        height: 130px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .videotitie {
+        font-size: 32px;
+      }
+
+      .videodescription {
+        font-size: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .videodate {
+        font-size: 13;
+        color: #8d8d8d;
+      }
+
+      .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        padding: 0 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1;
+        background-color: wheat;
+      }
+      .sns ul {
+        display: flex;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <!-- header -->
+      <header class="header">
+        <!-- logo -->
+        <a href="#about" class="logo">
+          <img
+            width="220"
+            height="100"
+            src="images/logo 1.PNG"
+            alt="상단로고"
+          />
+        </a>
+
+        <ul class="navi">
+          <li><a href="#about">ABOUT ME</a></li>
+          <li>
+            <a href="#video">MEDIA</a>
+            <ul class="submenu">
+              <li><a href="#video">video</a></li>
+              <li><a href="#poster">moving poster</a></li>
+              <li><a href="#subtitle">subtitle</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <form>
+          <input type="text" placeholder="검색어를 입력하세요" />
+        </form>
+      </header>
+
+      <!-- main -->
+      <main class="main">
+        <!-- about -->
+
+        <section id="about">
+          <div class="mainbox">
+            <!-- 여기에 각 영역 구조잡고 꾸미세요 -->
+            <div class="abouttop">
+              <img
+                class="intropic"
+                src="https://picsum.photos/300/300?random=1"
+                alt="프로필사진"
+              />
+              <div class="intro">
+                <div class="introtitle">HEO BON</div>
+                <div class="introdiscribtion">
+                  about me<br />
+                  영상과 기타 놀이 등을 좋아하는 영상쟁이 사람의 포트폴리오
+                  입니다.
+                </div>
+              </div>
+            </div>
+            <div class="infobox">
+              <div class="info">
+                <div class="infotitle">
+                  <img
+                    width="44"
+                    height="44"
+                    src="asset/info.svg"
+                    alt="인포 이미지"
+                  />
+                  INFO
+                </div>
+                <div class="infodetail">
+                  이름<br />생년월일<br />주소<br />학력<br />
+                </div>
+              </div>
+              <div class="education">
+                <div class="edutitle">
+                  <img
+                    width="44"
+                    height="44"
+                    src="asset/edu.svg"
+                    alt="에듀 이미지"
+                  />Education
+                </div>
+                <div class="edudetail">
+                  중학교 졸업<br />고등학교 졸업<br />대학교
+                </div>
+              </div>
+              <div class="software">
+                <div class="softwaretitle">
+                  <img
+                    width="44"
+                    height="44"
+                    src="asset/software.svg"
+                    alt="소프트웨어 이미지"
+                  />Software
+                </div>
+                <div class="softwaredetail">
+                  <img
+                    width="44"
+                    height="44"
+                    src="asset/vscode.svg"
+                    alt="vs코드이미지"
+                  />
+                  <img
+                    width="44"
+                    height="44"
+                    src="asset/figma.svg"
+                    alt="피그마이미지"
+                  />
+                  <img
+                    width="44"
+                    height="44"
+                    src="asset/after-effects.svg"
+                    alt="에프터이팩트이미지"
+                  />
+                  <img
+                    width="44"
+                    height="44"
+                    src="asset/premiere.svg"
+                    alt="프리미어이미지"
+                  />
+                  <img
+                    width="44"
+                    height="44"
+                    src="asset/illustrator.svg"
+                    alt="일러스트이미지"
+                  />
+                </div>
+              </div>
+              <div class="contact">
+                <div class="contacttitle">
+                  <img
+                    width="44"
+                    height="44"
+                    src="asset/contact.svg"
+                    alt="콘텍트 이미지"
+                  />Contact
+                </div>
+                <div class="contactdetail">E-mail<br />Discord<br />X</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- video -->
+        <section id="video">
+          <div class="box">
+            <!-- 여기에 각 영역 구조잡고 꾸미세요 -->
+            <div class="videobox">
+              <div class="videotop">
+                <div class="videopagetitle">Videos</div>
+                <div class="videopagedescription">
+                  일반 영상 미리보기 및<br />유튜브로 연결되는 비디오 페이지
+                  입니다
+                </div>
+              </div>
+              <div class="videopostbox">
+                <div class="videocard">
+                  <div class="videoplay">
+                    <iframe
+                      width="400"
+                      height="200"
+                      src="https://youtube.com/embed/JYf2f8Dn-WA?si=vbP4V5gcs-HcLJB6"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                  <div class="videotext">
+                    <div class="videotitie">영상 타이틀</div>
+                    <div class="videodescription">
+                      영상에 관한 설명 입니다. 영상에 대한 설명은 2줄로
+                      하겠습니다
+                    </div>
+                    <div class="videodate">제작기간 2024.00.00~00.00</div>
+                  </div>
+                </div>
+                <div class="videocard">
+                  <div class="videoplay">
+                    <iframe
+                      width="400"
+                      height="200"
+                      src="https://youtube.com/embed/EncG87FAdxk"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                  <div class="videotext">
+                    <div class="videotitie">영상 타이틀</div>
+                    <div class="videodescription">
+                      영상에 관한 설명 입니다. 영상에 대한 설명은 2줄로
+                      하겠습니다
+                    </div>
+                    <div class="videodate">제작기간 2024.00.00~00.00</div>
+                  </div>
+                </div>
+                <div class="videocard">
+                  <div class="videoplay">
+                    <iframe
+                      width="400"
+                      height="200"
+                      src="https://youtube.com/embed/JYf2f8Dn-WA?si=vbP4V5gcs-HcLJB6"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                  <div class="videotext">
+                    <div class="videotitie">영상 타이틀</div>
+                    <div class="videodescription">
+                      영상에 관한 설명 입니다. 영상에 대한 설명은 2줄로
+                      하겠습니다
+                    </div>
+                    <div class="videodate">제작기간 2024.00.00~00.00</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- moving poster -->
+        <section id="poster">
+          <div class="box">
+            <!-- 여기에 각 영역 구조잡고 꾸미세요 -->
+            <div class="videobox">
+              <div class="videotop">
+                <div class="videopagetitle">Moving Poster</div>
+                <div class="videopagedescription">
+                  무빙 포스터 예시 및 <br />
+                  유튜브 링크로 연결되는 페이지 입니다
+                </div>
+              </div>
+              <div class="videopostbox">
+                <div class="videocard">
+                  <div class="videoplay">
+                    <iframe
+                      width="400"
+                      height="200"
+                      src="https://youtube.com/embed/bmfN2-XkLfQ"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                  <div class="videotext">
+                    <div class="videotitie">영상 타이틀</div>
+                    <div class="videodescription">
+                      영상에 관한 설명 입니다. 영상에 대한 설명은 2줄로
+                      하겠습니다
+                    </div>
+                    <div class="videodate">제작기간 2024.00.00~00.00</div>
+                  </div>
+                </div>
+                <div class="videocard">
+                  <div class="videoplay">
+                    <iframe
+                      width="400"
+                      height="200"
+                      src="https://youtube.com/embed/bmfN2-XkLfQ"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                  <div class="videotext">
+                    <div class="videotitie">영상 타이틀</div>
+                    <div class="videodescription">
+                      영상에 관한 설명 입니다. 영상에 대한 설명은 2줄로
+                      하겠습니다
+                    </div>
+                    <div class="videodate">제작기간 2024.00.00~00.00</div>
+                  </div>
+                </div>
+                <div class="videocard">
+                  <div class="videoplay">
+                    <iframe
+                      width="400"
+                      height="200"
+                      src="https://youtube.com/embed/bmfN2-XkLfQ"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                  <div class="videotext">
+                    <div class="videotitie">영상 타이틀</div>
+                    <div class="videodescription">
+                      영상에 관한 설명 입니다. 영상에 대한 설명은 2줄로
+                      하겠습니다
+                    </div>
+                    <div class="videodate">제작기간 2024.00.00~00.00</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- subtitle -->
+        <section id="subtitle">
+          <div class="box">
+            <!-- 여기에 각 영역 구조잡고 꾸미세요 -->
+            <div class="videobox">
+              <div class="videotop">
+                <div class="videopagetitle">subtitle & 3D</div>
+                <div class="videopagedescription">
+                  자막 및 타이포 그래픽 등의 미리보기 및 <br />
+                  유튜브로 연결되는 페이지 입니다
+                </div>
+              </div>
+              <div class="videopostbox">
+                <div class="videocard">
+                  <div class="videoplay">
+                    <iframe
+                      width="400"
+                      height="200"
+                      src="https://youtube.com/embed/6w6lVQUOyyY?si=OIzvcQrZrfUXVGwd"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                  <div class="videotext">
+                    <div class="videotitie">영상 타이틀</div>
+                    <div class="videodescription">
+                      영상에 관한 설명 입니다. 영상에 대한 설명은 2줄로
+                      하겠습니다
+                    </div>
+                    <div class="videodate">제작기간 2024.00.00~00.00</div>
+                  </div>
+                </div>
+                <div class="videocard">
+                  <div class="videoplay">
+                    <iframe
+                      width="400"
+                      height="200"
+                      src="https://youtube.com/embed/6w6lVQUOyyY?si=OIzvcQrZrfUXVGwd"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                  <div class="videotext">
+                    <div class="videotitie">영상 타이틀</div>
+                    <div class="videodescription">
+                      영상에 관한 설명 입니다. 영상에 대한 설명은 2줄로
+                      하겠습니다
+                    </div>
+                    <div class="videodate">제작기간 2024.00.00~00.00</div>
+                  </div>
+                </div>
+                <div class="videocard">
+                  <div class="videoplay">
+                    <iframe
+                      width="400"
+                      height="200"
+                      src="https://youtube.com/embed/6w6lVQUOyyY?si=OIzvcQrZrfUXVGwd"
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                  <div class="videotext">
+                    <div class="videotitie">영상 타이틀</div>
+                    <div class="videodescription">
+                      영상에 관한 설명 입니다. 영상에 대한 설명은 2줄로
+                      하겠습니다
+                    </div>
+                    <div class="videodate">제작기간 2024.00.00~00.00</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <a href="#about" class="logo">
+          <img width="220" height="95" src="images/logo 1.PNG" alt="하단로고" />
+        </a>
+
+        <div class="copy">Copyright 2024(c) all rights reserved</div>
+
+        <div class="sns">
+          <ul>
+            <li>
+              <a href="#"
+                ><img
+                  width="24"
+                  height="24"
+                  src="asset/github.svg"
+                  alt="깃허브"
+              /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img
+                  width="24"
+                  height="24"
+                  src="asset/youtube.svg"
+                  alt="유튜브"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                ><img
+                  width="24"
+                  height="24"
+                  src="asset/x-logo-fill.svg"
+                  alt="트위터"
+                />
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                ><img
+                  width="24"
+                  height="24"
+                  src="asset/discord.svg"
+                  alt="디스코드"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
