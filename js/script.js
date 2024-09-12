@@ -7,6 +7,7 @@ window.addEventListener("load", () => {
 
   // 카드 컨테이너 변수
   const cardContainer = document.getElementById("cardContainer");
+  // const cardContainer = document.getElementById("videoContainer");
 
   // JSON 파일을 연동하여 카드 목록을 생성
   fetch("data/video.json")
