@@ -2,19 +2,19 @@
   "videos": [
     {
       "thumbnail": "https://picsum.photos/400/200?random=1",
-      "videoId": "JYf2f8Dn-WA?si=vbP4V5gcs-HcLJB6",
+      "videoId": "bmfN2-XkLfQ",
       "title": "첫 번째 영상 타이틀",
       "description": "첫 번째 영상에 대한 설명 글입니다."
     },
     {
       "thumbnail": "https://picsum.photos/400/200?random=2",
-      "videoId": "EncG87FAdxk",
+      "videoId": "bmfN2-XkLfQ",
       "title": "두 번째 영상 타이틀",
       "description": "두 번째 영상에 대한 설명 글입니다."
     },
     {
       "thumbnail": "https://picsum.photos/400/200?random=3",
-      "videoId": "JYf2f8Dn-WA?si=vbP4V5gcs-HcLJB6",
+      "videoId": "bmfN2-XkLfQ",
       "title": "세 번째 영상 타이틀",
       "description": "세 번째 영상에 대한 설명 글입니다."
     }

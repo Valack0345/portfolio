@@ -10,7 +10,8 @@ window.addEventListener("load", () => {
   const cardContainer = document.getElementById("videobox");
 
   // JSON 파일을 연동하여 카드 목록을 생성
-  fetch("data/video.json")
+  fetch("data/video.json");
+  fetch("data/moving.json");
     // 파란색 소괄호는 인수 그 안에 있는 자리는 익명 함수 그 안에 있는 노란색 괄호는 매개 변수
     .then((response) => {
       //    console.log(response);
